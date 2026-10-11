@@ -1,5 +1,5 @@
 package cr.ac.proyecto.model;
-
+import cr.ac.proyecto.exception.EquipoNoDisponibleException;
 import java.time.LocalDate;
 
 public class Prestamo {
@@ -12,14 +12,24 @@ public class Prestamo {
     private String estado;
 
     public Prestamo(Persona persona, Equipo equipo,
-                    LocalDate fechaPrestamo,
-                    LocalDate fechaDevolucionEsperada) {
-        this.persona = persona;
-        this.equipo = equipo;
-        this.fechaPrestamo = fechaPrestamo;
-        this.fechaDevolucionEsperada = fechaDevolucionEsperada;
-        this.estado = "ACTIVO";
+                LocalDate fechaPrestamo)
+        throws EquipoNoDisponibleException {
+
+    if (persona == null || equipo == null || fechaPrestamo == null) {
+        throw new IllegalArgumentException(
+                "Debe indicar la persona, el equipo y la fecha.");
     }
+
+    this.persona = persona;
+    this.equipo = equipo;
+    this.fechaPrestamo = fechaPrestamo;
+
+    this.fechaDevolucionEsperada = fechaPrestamo.plusDays(
+            persona.calcularDiasMaximos());
+
+    equipo.prestar();
+    this.estado = "ACTIVO";
+}
 
     public Persona getPersona() {
         return persona;
@@ -46,6 +56,17 @@ public class Prestamo {
     }
 
     public void registrarDevolucion(LocalDate fecha) {
-        // Se implementará en el corte 2.
+        if(!"ACTIVO".equals(estado)){
+        throw new IllegalStateException(
+                "El préstamo ya fue devuelto.");
+        }
+        if(fecha==null|| fecha.isBefore(fechaPrestamo))
+            {
+        throw new IllegalArgumentException(
+                "La fecha de devolución no es válida.");
+    }
+        equipo.devolver();
+        fechaDevolucionReal = fecha;
+    estado = "DEVUELTO";
     }
 }

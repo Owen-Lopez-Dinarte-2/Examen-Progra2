@@ -1,4 +1,5 @@
 package cr.ac.proyecto.model;
+import cr.ac.proyecto.exception.EquipoNoDisponibleException;
 
 public class Equipo implements Prestable {
 
@@ -50,16 +51,34 @@ public class Equipo implements Prestable {
     }
 
     @Override
-    public void prestar() {
-        // Se implementará en el corte 2.
+    public void prestar() throws EquipoNoDisponibleException {
+        if(estado!=EstadoEquipo.DISPONIBLE){
+        throw new EquipoNoDisponibleException(
+        "El Equipo no esta disponible para prestar.");
+        }
+        estado=EstadoEquipo.PRESTADO;
     }
 
     @Override
     public void devolver() {
-        // Se implementará en el corte 2.
+        if(estado!=EstadoEquipo.PRESTADO){
+        throw new IllegalStateException(
+        "El equipo no está prestado.");
+        }
+        estado = EstadoEquipo.DISPONIBLE;
     }
 
     public void cambiarEstado(EstadoEquipo nuevoEstado) {
-        // Se implementará en el corte 2.
+        if(nuevoEstado== null){
+        throw new IllegalArgumentException(
+                "Debe indicar un estado.");
+        }
+        
+        if(estado==EstadoEquipo.PRESTADO || nuevoEstado==EstadoEquipo.PRESTADO){
+           throw new IllegalArgumentException(
+                "Para prestar o devolver use los métodos correspondientes.");
+        } 
+        estado = nuevoEstado;
+        
+        }
     }
-}
