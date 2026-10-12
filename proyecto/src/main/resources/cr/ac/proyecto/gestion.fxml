@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cr.ac.proyecto.controller.GestionController"
+      spacing="15"
+      prefWidth="900"
+      prefHeight="600">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestión de equipos y préstamos"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="Prestar equipo">
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Identificación de la persona registrada"/>
+                <TextField fx:id="identificacion"
+                           promptText="Identificación"/>
+
+                <Label text="Código del equipo registrado"/>
+                <TextField fx:id="codigoPrestamo"
+                           promptText="Código del equipo"/>
+
+                <Label text="Fecha del préstamo"/>
+                <DatePicker fx:id="fechaPrestamo"
+                            editable="false"/>
+
+                <Button text="Registrar préstamo"
+                        onAction="#registrarPrestamo"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Devolver equipo">
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Código del equipo prestado"/>
+                <TextField fx:id="codigoDevolucion"
+                           promptText="Código del equipo"/>
+
+                <Label text="Fecha de devolución"/>
+                <DatePicker fx:id="fechaDevolucion"
+                            editable="false"/>
+
+                <Button text="Registrar devolución"
+                        onAction="#registrarDevolucion"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Reparaciones">
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Código del equipo"/>
+                <TextField fx:id="codigoEstado"
+                           promptText="Código del equipo"/>
+
+                <Label text="Nuevo estado"/>
+                <ComboBox fx:id="nuevoEstado" prefWidth="300"/>
+
+                <Button text="Cambiar estado"
+                        onAction="#cambiarEstado"/>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+
+    <Label fx:id="mensaje" wrapText="true"/>
+
+    <Button text="Volver al menú" onAction="#volver"/>
+
+</VBox>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cr.ac.proyecto.controller.ConsultaController"
+      spacing="15"
+      prefWidth="900"
+      prefHeight="600">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Consulta de información"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="Personas">
+            <TableView fx:id="tablaPersonas">
+                <columns>
+                    <TableColumn fx:id="colIdentificacion"
+                                 text="Identificación"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colNombre"
+                                 text="Nombre"
+                                 prefWidth="200"/>
+                    <TableColumn fx:id="colCorreo"
+                                 text="Correo"
+                                 prefWidth="250"/>
+                    <TableColumn fx:id="colTipoPersona"
+                                 text="Tipo"
+                                 prefWidth="150"/>
+                </columns>
+            </TableView>
+        </Tab>
+
+        <Tab text="Equipos">
+            <TableView fx:id="tablaEquipos">
+                <columns>
+                    <TableColumn fx:id="colCodigo"
+                                 text="Código"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="colTipoEquipo"
+                                 text="Tipo"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="colMarca"
+                                 text="Marca"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="colModelo"
+                                 text="Modelo"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="colEstadoEquipo"
+                                 text="Estado"
+                                 prefWidth="180"/>
+                </columns>
+            </TableView>
+        </Tab>
+
+        <Tab text="Préstamos">
+            <TableView fx:id="tablaPrestamos">
+                <columns>
+                    <TableColumn fx:id="colPersonaPrestamo"
+                                 text="Persona"
+                                 prefWidth="170"/>
+                    <TableColumn fx:id="colEquipoPrestamo"
+                                 text="Código del equipo"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="colFechaPrestamo"
+                                 text="Fecha de préstamo"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colFechaEsperada"
+                                 text="Devolución esperada"
+                                 prefWidth="160"/>
+                    <TableColumn fx:id="colFechaReal"
+                                 text="Devolución real"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="colEstadoPrestamo"
+                                 text="Estado"
+                                 prefWidth="120"/>
+                </columns>
+            </TableView>
+        </Tab>
+
+    </TabPane>
+
+    <Label fx:id="mensaje" wrapText="true"/>
+
+    <HBox spacing="15">
+        <Button text="Actualizar" onAction="#actualizar"/>
+        <Button text="Volver al menú" onAction="#volver"/>
+    </HBox>
+
+</VBox>

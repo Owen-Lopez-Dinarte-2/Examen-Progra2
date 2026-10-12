@@ -69,7 +69,7 @@ prestamos=new ArrayList<>();
 
     return null;
     }
-    public List<Persona> ListarPersonas(){
+    public List<Persona> listarPersonas(){
     return new ArrayList<>(personas);
     }
     

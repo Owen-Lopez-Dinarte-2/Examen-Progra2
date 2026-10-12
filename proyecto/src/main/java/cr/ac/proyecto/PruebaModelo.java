@@ -25,9 +25,9 @@ public class PruebaModelo {
         gestor.registrarEquipo(camara);
 
         System.out.println("Personas registradas: "
-                + gestor.ListarPersonas().size());
+                + gestor.listarPersonas().size());
 
-        for (Persona persona : gestor.ListarPersonas()) {
+        for (Persona persona : gestor.listarPersonas()) {
             System.out.println(persona.getNombre() + ": "
                     + persona.calcularDiasMaximos() + " días");
         }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cr.ac.proyecto.controller.RegistroController"
+      spacing="15"
+      prefWidth="900"
+      prefHeight="600">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Registro de personas y equipos"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+
+        <Tab text="Personas">
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Tipo de persona"/>
+                <ComboBox fx:id="tipoPersona" prefWidth="300"/>
+
+                <TextField fx:id="identificacion"
+                           promptText="Identificación"/>
+
+                <TextField fx:id="nombre"
+                           promptText="Nombre"/>
+
+                <TextField fx:id="correo"
+                           promptText="Correo"/>
+
+                <Label text="Carné para estudiante o departamento para funcionario"/>
+
+                <TextField fx:id="datoAdicional"
+                           promptText="Carné o departamento"/>
+
+                <Button text="Registrar persona"
+                        onAction="#registrarPersona"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Equipos">
+            <VBox spacing="12">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <TextField fx:id="codigoEquipo"
+                           promptText="Código del equipo"/>
+
+                <Label text="Tipo de equipo"/>
+                <ComboBox fx:id="tipoEquipo" prefWidth="300"/>
+
+                <TextField fx:id="marca"
+                           promptText="Marca"/>
+
+                <TextField fx:id="modelo"
+                           promptText="Modelo"/>
+
+                <Button text="Registrar equipo"
+                        onAction="#registrarEquipo"/>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+
+    <Label fx:id="mensaje" wrapText="true"/>
+
+    <Button text="Volver al menú"
+            onAction="#volver"/>
+</VBox>
